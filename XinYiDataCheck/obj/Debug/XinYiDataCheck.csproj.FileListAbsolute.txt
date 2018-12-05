@@ -1,0 +1,9 @@
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\bin\Debug\XinYiDataCheck.exe.config
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\bin\Debug\XinYiDataCheck.exe
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\bin\Debug\XinYiDataCheck.pdb
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\obj\Debug\XinYiDataCheck.FrmMain.resources
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\obj\Debug\XinYiDataCheck.Properties.Resources.resources
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\obj\Debug\XinYiDataCheck.csproj.GenerateResource.Cache
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\obj\Debug\XinYiDataCheck.exe
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\obj\Debug\XinYiDataCheck.pdb
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\obj\Debug\XinYiDataCheck.csprojResolveAssemblyReference.cache
