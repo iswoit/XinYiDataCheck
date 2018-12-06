@@ -92,7 +92,7 @@ namespace XinYiDataCheck
             lvProduct.EndUpdate();
 
 
-            if(Manager.ProductList.IsAllOK)
+            if (Manager.ProductList.IsAllOK)
             {
                 lbResult.Text = "是";
                 lbResult.ForeColor = Color.Green;
@@ -135,12 +135,30 @@ namespace XinYiDataCheck
                 foreach (string tmp in product.FundAccount_UF)
                     lbFundAccount_UF.Items.Add(tmp);
 
+
+                cbXyCheck.Checked = product.IsGzTableOK;
+
             }
         }
 
         private void cbShowErrorOnly_CheckedChanged(object sender, EventArgs e)
         {
             DisplayProductList();
+        }
+
+        private void lvProduct_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvProduct.SelectedItems.Count <= 0)
+                return;
+
+            ListViewItem lvi = lvProduct.SelectedItems[0];
+            if (lvi != null)
+            {
+                Product product = (Product)lvi.Tag;
+
+                Clipboard.SetDataObject(product.ClientID);
+
+            }
         }
     }
 }

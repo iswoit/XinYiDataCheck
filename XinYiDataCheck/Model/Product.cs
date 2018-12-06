@@ -14,14 +14,10 @@ namespace XinYiDataCheck
         private List<string> _fundAccount_xy;       // 资金账号列表_新意
         private List<string> _fundAccount_uf;       // 资金账号列表_uf
 
-
-        // 检查标记信息
-        private bool _isChecked = false;            // 是否检查过
+        private bool _isGZTable = false;           // 是否在UF估值信息维护表中
 
 
-
-
-        public Product(string clientID, string clientName, List<string> stockAccount_xy, List<string> stockAccount_uf, List<string> fundAccount_xy, List<string> fundAccount_uf)
+        public Product(string clientID, string clientName, List<string> stockAccount_xy, List<string> stockAccount_uf, List<string> fundAccount_xy, List<string> fundAccount_uf, bool isGZTable)
         {
             _clientID = clientID;
             _clientName = clientName;
@@ -29,6 +25,7 @@ namespace XinYiDataCheck
             _stockAccount_uf = stockAccount_uf;
             _fundAccount_xy = fundAccount_xy;
             _fundAccount_uf = fundAccount_uf;
+            _isGZTable = isGZTable;
         }
 
 
@@ -83,10 +80,15 @@ namespace XinYiDataCheck
         {
             get
             {
-
                 foreach (string tmpStkAcc in StockAccount_XY)
                 {
                     if (!StockAccount_UF.Contains(tmpStkAcc))
+                        return false;
+                }
+
+                foreach (string tmpStkAcc in StockAccount_UF)
+                {
+                    if (!StockAccount_XY.Contains(tmpStkAcc))
                         return false;
                 }
 
@@ -99,10 +101,15 @@ namespace XinYiDataCheck
         {
             get
             {
-
                 foreach (string tmFdAcc in FundAccount_XY)
                 {
                     if (!FundAccount_UF.Contains(tmFdAcc))
+                        return false;
+                }
+
+                foreach (string tmFdAcc in FundAccount_UF)
+                {
+                    if (!FundAccount_XY.Contains(tmFdAcc))
                         return false;
                 }
 
@@ -110,20 +117,40 @@ namespace XinYiDataCheck
             }
         }
 
-        // 是否完成检查
-        public bool IsChecked
+
+        // 是否在UF信用估值账户信息登记表中有
+        public bool IsGZTable
         {
-            get { return _isChecked; }
-            set { _isChecked = value; }
+            get { return _isGZTable; }
+            set { _isGZTable = value; }
         }
+
+
+        /// <summary>
+        /// 80结尾是否在信用估值账号登记表中
+        /// </summary>
+        public bool IsGzTableOK
+        {
+            get
+            {
+                foreach (string tmp in FundAccount_UF)
+                {
+                    if (tmp.Length == 14 && tmp.EndsWith("80"))
+                        if (IsGZTable == false)
+                            return false;
+                }
+
+                return true;
+            }
+        }
+
 
         // 是否通过检查
         public bool IsOK
         {
             get
             {
-
-                if (IsStockAccountOK && IsFundAccountOK)
+                if (IsStockAccountOK && IsFundAccountOK && IsGzTableOK)
                     return true;
                 else
                     return false;

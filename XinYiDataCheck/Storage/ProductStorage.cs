@@ -63,12 +63,15 @@ namespace XinYiDataCheck
                                 List<string> stockAccount_uf = ReadProductStockAccount_UF(clientID, cn_uf);
                                 List<string> fundAccount_uf = ReadProductFundAccount_UF(clientID, cn_uf);
 
+                                bool isGzTable = IsGZTable(clientID, cn_uf);
+
                                 Product tmpPrd = new Product(clientID: clientID,
                                     clientName: clientName,
                                     stockAccount_xy: stockAccount_xy,
                                     stockAccount_uf: stockAccount_uf,
                                     fundAccount_xy: fundAccount_xy,
-                                    fundAccount_uf: fundAccount_uf);
+                                    fundAccount_uf: fundAccount_uf,
+                                    isGZTable: isGzTable);
 
                                 productList.Add(tmpPrd);
                             }
@@ -196,6 +199,35 @@ namespace XinYiDataCheck
             return fundAccList;
         }
 
+
+        /// <summary>
+        /// 是否在信用估值账户登记表中存在
+        /// </summary>
+        /// <param name="clientID"></param>
+        /// <param name="cn_uf"></param>
+        /// <returns></returns>
+        private static bool IsGZTable(string clientID, OracleConnection cn_uf)
+        {
+            bool bReturn = false;
+
+            string query = string.Format("select count(1) from hs_asset.CRDTVALACCOUNT where client_id='{0}'", clientID);
+            using (OracleCommand cmd = new OracleCommand(query, cn_uf))
+            {
+                object obj= cmd.ExecuteOracleScalar();
+                int val = 0;
+                if (!int.TryParse(obj.ToString(), out val))
+                    val = 0;
+
+                if (val == 0)
+                    bReturn = false;
+                else
+                    bReturn = true;
+
+                
+            }//eof cmd
+
+            return bReturn;
+        }
 
     }
 }
