@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCheck = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbXyCheck = new System.Windows.Forms.CheckBox();
             this.lbFundAccount_UF = new System.Windows.Forms.ListBox();
             this.lbFundAccount_XY = new System.Windows.Forms.ListBox();
             this.lbStockAccount_UF = new System.Windows.Forms.ListBox();
@@ -48,7 +49,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lbResult = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.cbXyCheck = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbBranchNo_XY = new System.Windows.Forms.TextBox();
+            this.tbBranchNo_UF = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,6 +116,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tbBranchNo_UF);
+            this.groupBox1.Controls.Add(this.tbBranchNo_XY);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.cbXyCheck);
             this.groupBox1.Controls.Add(this.lbFundAccount_UF);
             this.groupBox1.Controls.Add(this.lbFundAccount_XY);
@@ -128,11 +136,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "详细信息:";
             // 
+            // cbXyCheck
+            // 
+            this.cbXyCheck.AutoSize = true;
+            this.cbXyCheck.Enabled = false;
+            this.cbXyCheck.Location = new System.Drawing.Point(18, 175);
+            this.cbXyCheck.Name = "cbXyCheck";
+            this.cbXyCheck.Size = new System.Drawing.Size(120, 16);
+            this.cbXyCheck.TabIndex = 8;
+            this.cbXyCheck.Text = "两融柜台文件检查";
+            this.cbXyCheck.UseVisualStyleBackColor = true;
+            // 
             // lbFundAccount_UF
             // 
             this.lbFundAccount_UF.FormattingEnabled = true;
             this.lbFundAccount_UF.ItemHeight = 12;
-            this.lbFundAccount_UF.Location = new System.Drawing.Point(144, 160);
+            this.lbFundAccount_UF.Location = new System.Drawing.Point(144, 117);
             this.lbFundAccount_UF.Name = "lbFundAccount_UF";
             this.lbFundAccount_UF.Size = new System.Drawing.Size(104, 52);
             this.lbFundAccount_UF.TabIndex = 7;
@@ -141,7 +160,7 @@
             // 
             this.lbFundAccount_XY.FormattingEnabled = true;
             this.lbFundAccount_XY.ItemHeight = 12;
-            this.lbFundAccount_XY.Location = new System.Drawing.Point(18, 160);
+            this.lbFundAccount_XY.Location = new System.Drawing.Point(18, 117);
             this.lbFundAccount_XY.Name = "lbFundAccount_XY";
             this.lbFundAccount_XY.Size = new System.Drawing.Size(107, 52);
             this.lbFundAccount_XY.TabIndex = 6;
@@ -152,13 +171,13 @@
             this.lbStockAccount_UF.ItemHeight = 12;
             this.lbStockAccount_UF.Location = new System.Drawing.Point(144, 36);
             this.lbStockAccount_UF.Name = "lbStockAccount_UF";
-            this.lbStockAccount_UF.Size = new System.Drawing.Size(104, 88);
+            this.lbStockAccount_UF.Size = new System.Drawing.Size(104, 52);
             this.lbStockAccount_UF.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(142, 144);
+            this.label5.Location = new System.Drawing.Point(142, 102);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 12);
             this.label5.TabIndex = 4;
@@ -167,7 +186,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 144);
+            this.label4.Location = new System.Drawing.Point(16, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 12);
             this.label4.TabIndex = 3;
@@ -197,7 +216,7 @@
             this.lbStockAccount_XY.ItemHeight = 12;
             this.lbStockAccount_XY.Location = new System.Drawing.Point(18, 36);
             this.lbStockAccount_XY.Name = "lbStockAccount_XY";
-            this.lbStockAccount_XY.Size = new System.Drawing.Size(107, 88);
+            this.lbStockAccount_XY.Size = new System.Drawing.Size(107, 52);
             this.lbStockAccount_XY.TabIndex = 0;
             // 
             // cbShowErrorOnly
@@ -239,16 +258,39 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "*中登业务每日16点截止，请16点后运行";
             // 
-            // cbXyCheck
+            // label8
             // 
-            this.cbXyCheck.AutoSize = true;
-            this.cbXyCheck.Enabled = false;
-            this.cbXyCheck.Location = new System.Drawing.Point(18, 230);
-            this.cbXyCheck.Name = "cbXyCheck";
-            this.cbXyCheck.Size = new System.Drawing.Size(120, 16);
-            this.cbXyCheck.TabIndex = 8;
-            this.cbXyCheck.Text = "两融柜台文件检查";
-            this.cbXyCheck.UseVisualStyleBackColor = true;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 198);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 12);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "新意营业部号:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(142, 198);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 12);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "UF营业部号:";
+            // 
+            // tbBranchNo_XY
+            // 
+            this.tbBranchNo_XY.Location = new System.Drawing.Point(18, 212);
+            this.tbBranchNo_XY.Name = "tbBranchNo_XY";
+            this.tbBranchNo_XY.ReadOnly = true;
+            this.tbBranchNo_XY.Size = new System.Drawing.Size(107, 21);
+            this.tbBranchNo_XY.TabIndex = 11;
+            // 
+            // tbBranchNo_UF
+            // 
+            this.tbBranchNo_UF.Location = new System.Drawing.Point(144, 213);
+            this.tbBranchNo_UF.Name = "tbBranchNo_UF";
+            this.tbBranchNo_UF.ReadOnly = true;
+            this.tbBranchNo_UF.Size = new System.Drawing.Size(104, 21);
+            this.tbBranchNo_UF.TabIndex = 12;
             // 
             // FrmMain
             // 
@@ -296,6 +338,10 @@
         private System.Windows.Forms.Label lbResult;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox cbXyCheck;
+        private System.Windows.Forms.TextBox tbBranchNo_UF;
+        private System.Windows.Forms.TextBox tbBranchNo_XY;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }
 

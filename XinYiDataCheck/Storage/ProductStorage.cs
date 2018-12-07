@@ -44,7 +44,7 @@ namespace XinYiDataCheck
                     {
                         cmd.Connection = cn_xy;
 
-                        cmd.CommandText = @"select * from EA_CTMS.BS_TRUST_PRODUCT_INFO where IS_CLEANUP='0'";
+                        cmd.CommandText = @"select * from EA_CTMS.BS_TRUST_PRODUCT_INFO where IS_CLEANUP='0' order by PRODUCT_CODE asc";
                         using (OracleDataReader dr = cmd.ExecuteReader())
                         {
                             while (dr.Read())
@@ -58,12 +58,16 @@ namespace XinYiDataCheck
                                 // 读新意股东号、资金账号
                                 List<string> stockAccount_xy = ReadProductStockAccount_XY(clientID, cn_xy);
                                 List<string> fundAccount_xy = ReadProductFundAccount_XY(clientID, cn_xy);
+                                string branchNo_xy = dr["AGENT_CODE"].ToString().Trim();
 
-                                // 读柜台股东号、
+                                // 读柜台股东号、资金账号
                                 List<string> stockAccount_uf = ReadProductStockAccount_UF(clientID, cn_uf);
                                 List<string> fundAccount_uf = ReadProductFundAccount_UF(clientID, cn_uf);
+                                string branchNo_uf = ReadProductBranchNo_UF(clientID, cn_uf);
 
                                 bool isGzTable = IsGZTable(clientID, cn_uf);
+
+
 
                                 Product tmpPrd = new Product(clientID: clientID,
                                     clientName: clientName,
@@ -71,7 +75,10 @@ namespace XinYiDataCheck
                                     stockAccount_uf: stockAccount_uf,
                                     fundAccount_xy: fundAccount_xy,
                                     fundAccount_uf: fundAccount_uf,
-                                    isGZTable: isGzTable);
+                                    isGZTable: isGzTable,
+                                    branchNo_xy: branchNo_xy,
+                                    branchNo_uf: branchNo_uf
+                                    );
 
                                 productList.Add(tmpPrd);
                             }
@@ -213,7 +220,7 @@ namespace XinYiDataCheck
             string query = string.Format("select count(1) from hs_asset.CRDTVALACCOUNT where client_id='{0}'", clientID);
             using (OracleCommand cmd = new OracleCommand(query, cn_uf))
             {
-                object obj= cmd.ExecuteOracleScalar();
+                object obj = cmd.ExecuteOracleScalar();
                 int val = 0;
                 if (!int.TryParse(obj.ToString(), out val))
                     val = 0;
@@ -223,11 +230,28 @@ namespace XinYiDataCheck
                 else
                     bReturn = true;
 
-                
+
             }//eof cmd
 
             return bReturn;
         }
+
+
+        private static string ReadProductBranchNo_UF(string clientID, OracleConnection cn_uf)
+        {
+            string strReturn = string.Empty;
+
+            string query = string.Format("select branch_no from hs_asset.client where client_id='{0}'", clientID);
+            using (OracleCommand cmd = new OracleCommand(query, cn_uf))
+            {
+                object obj = cmd.ExecuteOracleScalar();
+                if (!Convert.IsDBNull(obj))
+                    strReturn = obj.ToString().Trim();
+            }//eof cmd
+
+            return strReturn;
+        }
+
 
     }
 }

@@ -13,11 +13,13 @@ namespace XinYiDataCheck
         private List<string> _stockAccount_uf;      // 股东号列表_uf
         private List<string> _fundAccount_xy;       // 资金账号列表_新意
         private List<string> _fundAccount_uf;       // 资金账号列表_uf
+        private string _branchNo_xy;
+        private string _branchNo_uf;
 
         private bool _isGZTable = false;           // 是否在UF估值信息维护表中
 
 
-        public Product(string clientID, string clientName, List<string> stockAccount_xy, List<string> stockAccount_uf, List<string> fundAccount_xy, List<string> fundAccount_uf, bool isGZTable)
+        public Product(string clientID, string clientName, List<string> stockAccount_xy, List<string> stockAccount_uf, List<string> fundAccount_xy, List<string> fundAccount_uf, bool isGZTable, string branchNo_xy, string branchNo_uf)
         {
             _clientID = clientID;
             _clientName = clientName;
@@ -26,6 +28,9 @@ namespace XinYiDataCheck
             _fundAccount_xy = fundAccount_xy;
             _fundAccount_uf = fundAccount_uf;
             _isGZTable = isGZTable;
+
+            _branchNo_xy = branchNo_xy;
+            _branchNo_uf = branchNo_uf;
         }
 
 
@@ -72,6 +77,20 @@ namespace XinYiDataCheck
         {
             get { return _fundAccount_uf; }
             set { _fundAccount_uf = value; }
+        }
+
+        // 新意营业部
+        public string BranchNo_XY
+        {
+            get { return _branchNo_xy; }
+            set { _branchNo_xy = value; }
+        }
+
+        // UF营业部
+        public string BranchNo_UF
+        {
+            get { return _branchNo_uf; }
+            set { _branchNo_uf = value; }
         }
 
 
@@ -126,6 +145,15 @@ namespace XinYiDataCheck
         }
 
 
+        // 营业部是否一致
+        public bool IsBranchNoOK
+        {
+            get
+            {
+                return (BranchNo_UF == BranchNo_XY);
+            }
+        }
+
         /// <summary>
         /// 80结尾是否在信用估值账号登记表中
         /// </summary>
@@ -150,7 +178,7 @@ namespace XinYiDataCheck
         {
             get
             {
-                if (IsStockAccountOK && IsFundAccountOK && IsGzTableOK)
+                if (IsStockAccountOK && IsFundAccountOK && IsGzTableOK && IsBranchNoOK)
                     return true;
                 else
                     return false;

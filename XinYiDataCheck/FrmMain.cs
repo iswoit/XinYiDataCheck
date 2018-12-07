@@ -138,6 +138,10 @@ namespace XinYiDataCheck
 
                 cbXyCheck.Checked = product.IsGzTableOK;
 
+
+                tbBranchNo_XY.Text = product.BranchNo_XY;
+                tbBranchNo_UF.Text = product.BranchNo_UF;
+
             }
         }
 
