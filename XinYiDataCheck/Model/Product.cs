@@ -17,9 +17,10 @@ namespace XinYiDataCheck
         private string _branchNo_uf;
 
         private bool _isGZTable = false;           // 是否在UF估值信息维护表中
+        private bool _checkYYB;
 
 
-        public Product(string clientID, string clientName, List<string> stockAccount_xy, List<string> stockAccount_uf, List<string> fundAccount_xy, List<string> fundAccount_uf, bool isGZTable, string branchNo_xy, string branchNo_uf)
+        public Product(string clientID, string clientName, List<string> stockAccount_xy, List<string> stockAccount_uf, List<string> fundAccount_xy, List<string> fundAccount_uf, bool isGZTable, string branchNo_xy, string branchNo_uf,bool checkYYB)
         {
             _clientID = clientID;
             _clientName = clientName;
@@ -31,6 +32,8 @@ namespace XinYiDataCheck
 
             _branchNo_xy = branchNo_xy;
             _branchNo_uf = branchNo_uf;
+
+            _checkYYB = checkYYB;
         }
 
 
@@ -150,6 +153,9 @@ namespace XinYiDataCheck
         {
             get
             {
+                if (_checkYYB == false)
+                    return true;
+
                 return (BranchNo_UF == BranchNo_XY);
             }
         }

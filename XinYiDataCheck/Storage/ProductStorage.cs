@@ -14,7 +14,7 @@ namespace XinYiDataCheck
         /// <param name="dbLink_xy"></param>
         /// <param name="dbLink_uf"></param>
         /// <returns></returns>
-        public static ProductList ReadProductList(DBLink dbLink_xy, DBLink dbLink_uf)
+        public static ProductList ReadProductList(DBLink dbLink_xy, DBLink dbLink_uf, bool checkYYB)
         {
             ProductList productList = new ProductList();    // 产品列表
 
@@ -77,7 +77,8 @@ namespace XinYiDataCheck
                                     fundAccount_uf: fundAccount_uf,
                                     isGZTable: isGzTable,
                                     branchNo_xy: branchNo_xy,
-                                    branchNo_uf: branchNo_uf
+                                    branchNo_uf: branchNo_uf,
+                                    checkYYB: checkYYB
                                     );
 
                                 productList.Add(tmpPrd);

@@ -11,7 +11,7 @@ namespace XinYiDataCheck
         private DBLink _dbLink_xy;
         private DBLink _dbLink_uf;
         private ProductList _productList = new ProductList();
-
+        private bool _checkYYB;
 
         public DBLink DBLink_XY
         {
@@ -38,6 +38,13 @@ namespace XinYiDataCheck
         public Manager()
         {
             GetDBLink();
+
+            // 20190125：禁止检查营业部
+            string conf_yyb = ConfigurationManager.AppSettings["yyb"];
+            if (conf_yyb != null && string.Equals(conf_yyb.Trim(), "0", StringComparison.CurrentCultureIgnoreCase))
+                _checkYYB = false;
+            else
+                _checkYYB = true;
         }
 
 
@@ -68,7 +75,7 @@ namespace XinYiDataCheck
         /// </summary>
         public void LoadProductInfo()
         {
-            _productList = ProductStorage.ReadProductList(DBLink_XY, DBLink_UF);
+            _productList = ProductStorage.ReadProductList(DBLink_XY, DBLink_UF, _checkYYB);
         }
 
 
