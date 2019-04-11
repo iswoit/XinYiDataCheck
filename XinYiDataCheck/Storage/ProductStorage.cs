@@ -51,6 +51,7 @@ namespace XinYiDataCheck
                             {
                                 // 读新意基础信息
                                 string clientID = dr["PRODUCT_CODE"].ToString().Trim();
+                                string extendCode = dr["EXTEND_CODE"].ToString().Trim();        // 扩展代码，这里用于多个客户号
                                 string clientName = string.Empty;
                                 if (!Convert.IsDBNull(dr["PRODUCT_NAME"]))
                                     clientName = dr["PRODUCT_NAME"].ToString().Trim();
@@ -63,9 +64,31 @@ namespace XinYiDataCheck
                                 // 读柜台股东号、资金账号
                                 List<string> stockAccount_uf = ReadProductStockAccount_UF(clientID, cn_uf);
                                 List<string> fundAccount_uf = ReadProductFundAccount_UF(clientID, cn_uf);
-                                string branchNo_uf = ReadProductBranchNo_UF(clientID, cn_uf);
+                                // 20190411-如果新意的扩展编码维护了与客户号不一样的，追加
+                                if (!string.IsNullOrEmpty(extendCode) && !string.Equals(clientID, extendCode, StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    string[] clientID_ext = extendCode.Split(new char[] { ',', '|', ' ', ';' });
+                                    foreach (string tmp in clientID_ext)
+                                    {
+                                        List<string> tmp_stockAccount_uf = ReadProductStockAccount_UF(tmp.Trim(), cn_uf);
+                                        foreach (string tmp_sa in tmp_stockAccount_uf)
+                                        {
+                                            if (!stockAccount_uf.Contains(tmp_sa.Trim()))
+                                                stockAccount_uf.Add(tmp_sa.Trim());
+                                        }
 
-                                bool isGzTable = IsGZTable(clientID, cn_uf);
+                                        List<string> tmp_fundAccount_uf = ReadProductFundAccount_UF(tmp.Trim(), cn_uf);
+                                        foreach (string tmp_fa in tmp_fundAccount_uf)
+                                        {
+                                            if (!fundAccount_uf.Contains(tmp_fa.Trim()))
+                                                fundAccount_uf.Add(tmp_fa.Trim());
+                                        }
+                                    }
+                                }
+
+
+                                string branchNo_uf = ReadProductBranchNo_UF(clientID, cn_uf);       // uf营业部号
+                                bool isGzTable = IsGZTable(clientID, cn_uf);                        // 信用估值账户登记表是否已登记
 
 
 

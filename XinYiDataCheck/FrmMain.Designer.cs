@@ -36,6 +36,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCheck = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbBranchNo_UF = new System.Windows.Forms.TextBox();
+            this.tbBranchNo_XY = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.cbXyCheck = new System.Windows.Forms.CheckBox();
             this.lbFundAccount_UF = new System.Windows.Forms.ListBox();
             this.lbFundAccount_XY = new System.Windows.Forms.ListBox();
@@ -49,10 +53,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lbResult = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbBranchNo_XY = new System.Windows.Forms.TextBox();
-            this.tbBranchNo_UF = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,6 +135,40 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "详细信息:";
+            // 
+            // tbBranchNo_UF
+            // 
+            this.tbBranchNo_UF.Location = new System.Drawing.Point(144, 213);
+            this.tbBranchNo_UF.Name = "tbBranchNo_UF";
+            this.tbBranchNo_UF.ReadOnly = true;
+            this.tbBranchNo_UF.Size = new System.Drawing.Size(104, 21);
+            this.tbBranchNo_UF.TabIndex = 12;
+            // 
+            // tbBranchNo_XY
+            // 
+            this.tbBranchNo_XY.Location = new System.Drawing.Point(18, 212);
+            this.tbBranchNo_XY.Name = "tbBranchNo_XY";
+            this.tbBranchNo_XY.ReadOnly = true;
+            this.tbBranchNo_XY.Size = new System.Drawing.Size(107, 21);
+            this.tbBranchNo_XY.TabIndex = 11;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(142, 198);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 12);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "UF营业部号:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 198);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 12);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "新意营业部号:";
             // 
             // cbXyCheck
             // 
@@ -252,51 +286,18 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(585, 284);
+            this.label7.Location = new System.Drawing.Point(567, 287);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(215, 12);
+            this.label7.Size = new System.Drawing.Size(299, 48);
             this.label7.TabIndex = 7;
-            this.label7.Text = "*中登业务每日16点截止，请16点后运行";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 198);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 12);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "新意营业部号:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(142, 198);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(71, 12);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "UF营业部号:";
-            // 
-            // tbBranchNo_XY
-            // 
-            this.tbBranchNo_XY.Location = new System.Drawing.Point(18, 212);
-            this.tbBranchNo_XY.Name = "tbBranchNo_XY";
-            this.tbBranchNo_XY.ReadOnly = true;
-            this.tbBranchNo_XY.Size = new System.Drawing.Size(107, 21);
-            this.tbBranchNo_XY.TabIndex = 11;
-            // 
-            // tbBranchNo_UF
-            // 
-            this.tbBranchNo_UF.Location = new System.Drawing.Point(144, 213);
-            this.tbBranchNo_UF.Name = "tbBranchNo_UF";
-            this.tbBranchNo_UF.ReadOnly = true;
-            this.tbBranchNo_UF.Size = new System.Drawing.Size(104, 21);
-            this.tbBranchNo_UF.TabIndex = 12;
+            this.label7.Text = "*本程序检查新意与UF股东号、资金账号不一致的情况。\r\n*中登业务每日16点截止，请16点后运行。\r\n*新意1个产品可能对应多个UF客户号，目前新意配置\r\n在扩展" +
+    "编码中进行配对。";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 308);
+            this.ClientSize = new System.Drawing.Size(862, 344);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lbResult);
             this.Controls.Add(this.label6);
@@ -305,6 +306,7 @@
             this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lvProduct);
+            this.MaximizeBox = false;
             this.Name = "FrmMain";
             this.Text = "新意分仓数据检查";
             this.Load += new System.EventHandler(this.FrmMain_Load);
