@@ -1,0 +1,8 @@
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\bin\Release\XinYiDataCheck.exe.config
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\bin\Release\XinYiDataCheck.exe
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\bin\Release\XinYiDataCheck.pdb
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\obj\Release\XinYiDataCheck.FrmMain.resources
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\obj\Release\XinYiDataCheck.Properties.Resources.resources
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\obj\Release\XinYiDataCheck.csproj.GenerateResource.Cache
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\obj\Release\XinYiDataCheck.exe
+D:\Codes\C#\XinYiDataCheck\XinYiDataCheck\obj\Release\XinYiDataCheck.pdb

@@ -131,14 +131,14 @@
             this.groupBox1.Controls.Add(this.lbStockAccount_XY);
             this.groupBox1.Location = new System.Drawing.Point(569, 23);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(268, 252);
+            this.groupBox1.Size = new System.Drawing.Size(376, 252);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "详细信息:";
             // 
             // tbBranchNo_UF
             // 
-            this.tbBranchNo_UF.Location = new System.Drawing.Point(144, 213);
+            this.tbBranchNo_UF.Location = new System.Drawing.Point(202, 213);
             this.tbBranchNo_UF.Name = "tbBranchNo_UF";
             this.tbBranchNo_UF.ReadOnly = true;
             this.tbBranchNo_UF.Size = new System.Drawing.Size(104, 21);
@@ -155,7 +155,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(142, 198);
+            this.label9.Location = new System.Drawing.Point(200, 198);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(71, 12);
             this.label9.TabIndex = 10;
@@ -185,9 +185,9 @@
             // 
             this.lbFundAccount_UF.FormattingEnabled = true;
             this.lbFundAccount_UF.ItemHeight = 12;
-            this.lbFundAccount_UF.Location = new System.Drawing.Point(144, 117);
+            this.lbFundAccount_UF.Location = new System.Drawing.Point(202, 117);
             this.lbFundAccount_UF.Name = "lbFundAccount_UF";
-            this.lbFundAccount_UF.Size = new System.Drawing.Size(104, 52);
+            this.lbFundAccount_UF.Size = new System.Drawing.Size(159, 52);
             this.lbFundAccount_UF.TabIndex = 7;
             // 
             // lbFundAccount_XY
@@ -196,22 +196,22 @@
             this.lbFundAccount_XY.ItemHeight = 12;
             this.lbFundAccount_XY.Location = new System.Drawing.Point(18, 117);
             this.lbFundAccount_XY.Name = "lbFundAccount_XY";
-            this.lbFundAccount_XY.Size = new System.Drawing.Size(107, 52);
+            this.lbFundAccount_XY.Size = new System.Drawing.Size(154, 52);
             this.lbFundAccount_XY.TabIndex = 6;
             // 
             // lbStockAccount_UF
             // 
             this.lbStockAccount_UF.FormattingEnabled = true;
             this.lbStockAccount_UF.ItemHeight = 12;
-            this.lbStockAccount_UF.Location = new System.Drawing.Point(144, 36);
+            this.lbStockAccount_UF.Location = new System.Drawing.Point(202, 36);
             this.lbStockAccount_UF.Name = "lbStockAccount_UF";
-            this.lbStockAccount_UF.Size = new System.Drawing.Size(104, 52);
+            this.lbStockAccount_UF.Size = new System.Drawing.Size(159, 52);
             this.lbStockAccount_UF.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(142, 102);
+            this.label5.Location = new System.Drawing.Point(200, 102);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 12);
             this.label5.TabIndex = 4;
@@ -229,7 +229,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(142, 21);
+            this.label3.Location = new System.Drawing.Point(200, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 12);
             this.label3.TabIndex = 2;
@@ -250,7 +250,7 @@
             this.lbStockAccount_XY.ItemHeight = 12;
             this.lbStockAccount_XY.Location = new System.Drawing.Point(18, 36);
             this.lbStockAccount_XY.Name = "lbStockAccount_XY";
-            this.lbStockAccount_XY.Size = new System.Drawing.Size(107, 52);
+            this.lbStockAccount_XY.Size = new System.Drawing.Size(154, 52);
             this.lbStockAccount_XY.TabIndex = 0;
             // 
             // cbShowErrorOnly
@@ -297,7 +297,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 344);
+            this.ClientSize = new System.Drawing.Size(957, 344);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lbResult);
             this.Controls.Add(this.label6);

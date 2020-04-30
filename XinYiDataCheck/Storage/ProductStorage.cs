@@ -56,38 +56,52 @@ namespace XinYiDataCheck
                                 if (!Convert.IsDBNull(dr["PRODUCT_NAME"]))
                                     clientName = dr["PRODUCT_NAME"].ToString().Trim();
 
+                                List<string> stockAccount_xy = new List<string>();
+                                List<string> fundAccount_xy = new List<string>();
+                                List<string> stockAccount_uf = new List<string>();
+                                List<string> fundAccount_uf = new List<string>();
+                                string branchNo_xy = string.Empty;
                                 // 读新意股东号、资金账号
-                                List<string> stockAccount_xy = ReadProductStockAccount_XY(clientID, cn_xy);
-                                List<string> fundAccount_xy = ReadProductFundAccount_XY(clientID, cn_xy);
-                                string branchNo_xy = dr["AGENT_CODE"].ToString().Trim();
-
-                                // 读柜台股东号、资金账号
-                                List<string> stockAccount_uf = ReadProductStockAccount_UF(clientID, cn_uf);
-                                List<string> fundAccount_uf = ReadProductFundAccount_UF(clientID, cn_uf);
-                                // 20190411-如果新意的扩展编码维护了与客户号不一样的，追加
-                                if (!string.IsNullOrEmpty(extendCode) && !string.Equals(clientID, extendCode, StringComparison.InvariantCultureIgnoreCase))
+                                try
                                 {
-                                    string[] clientID_ext = extendCode.Split(new char[] { ',', '|', ' ', ';' });
-                                    foreach (string tmp in clientID_ext)
-                                    {
-                                        List<string> tmp_stockAccount_uf = ReadProductStockAccount_UF(tmp.Trim(), cn_uf);
-                                        foreach (string tmp_sa in tmp_stockAccount_uf)
-                                        {
-                                            if (!stockAccount_uf.Contains(tmp_sa.Trim()))
-                                                stockAccount_uf.Add(tmp_sa.Trim());
-                                        }
+                                    stockAccount_xy = ReadProductStockAccount_XY(clientID, cn_xy);
+                                    fundAccount_xy = ReadProductFundAccount_XY(clientID, cn_xy);
+                                    branchNo_xy = string.Empty;
 
-                                        List<string> tmp_fundAccount_uf = ReadProductFundAccount_UF(tmp.Trim(), cn_uf);
-                                        foreach (string tmp_fa in tmp_fundAccount_uf)
+                                    // 读柜台股东号、资金账号
+                                    stockAccount_uf = ReadProductStockAccount_UF(clientID, cn_uf);
+                                    fundAccount_uf = ReadProductFundAccount_UF(clientID, cn_uf);
+                                    // 20190411-如果新意的扩展编码维护了与客户号不一样的，追加
+                                    if (!string.IsNullOrEmpty(extendCode) && !string.Equals(clientID, extendCode, StringComparison.InvariantCultureIgnoreCase))
+                                    {
+                                        string[] clientID_ext = extendCode.Split(new char[] { ',', '|', ' ', ';', '；', '，' });
+                                        foreach (string tmp in clientID_ext)
                                         {
-                                            if (!fundAccount_uf.Contains(tmp_fa.Trim()))
-                                                fundAccount_uf.Add(tmp_fa.Trim());
+                                            List<string> tmp_stockAccount_uf = ReadProductStockAccount_UF(tmp.Trim(), cn_uf);
+                                            foreach (string tmp_sa in tmp_stockAccount_uf)
+                                            {
+                                                if (!stockAccount_uf.Contains(tmp_sa.Trim()))
+                                                    stockAccount_uf.Add(tmp_sa.Trim());
+                                            }
+
+                                            List<string> tmp_fundAccount_uf = ReadProductFundAccount_UF(tmp.Trim(), cn_uf);
+                                            foreach (string tmp_fa in tmp_fundAccount_uf)
+                                            {
+                                                if (!fundAccount_uf.Contains(tmp_fa.Trim()))
+                                                    fundAccount_uf.Add(tmp_fa.Trim());
+                                            }
                                         }
                                     }
                                 }
+                                catch (Exception ex)
+                                {
+                                    throw new Exception(clientID + "异常： " + ex.Message);
+                                }
 
 
-                                string branchNo_uf = ReadProductBranchNo_UF(clientID, cn_uf);       // uf营业部号
+
+
+                                string branchNo_uf = string.Empty;       // uf营业部号
                                 bool isGzTable = IsGZTable(clientID, cn_uf);                        // 信用估值账户登记表是否已登记
 
 
