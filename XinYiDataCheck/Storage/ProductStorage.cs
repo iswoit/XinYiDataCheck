@@ -44,7 +44,7 @@ namespace XinYiDataCheck
                     {
                         cmd.Connection = cn_xy;
 
-                        cmd.CommandText = @"select * from EA_CTMS.BS_TRUST_PRODUCT_INFO where IS_CLEANUP='0' order by PRODUCT_CODE asc";
+                        cmd.CommandText = @"select * from EA_CTMS.BS_TRUST_PRODUCT_INFO where IS_CLEANUP='0' and product_type not in ('0','82','262') order by PRODUCT_CODE asc";
                         using (OracleDataReader dr = cmd.ExecuteReader())
                         {
                             while (dr.Read())
