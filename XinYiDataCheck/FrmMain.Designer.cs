@@ -65,6 +65,7 @@
             this.columnHeader4});
             this.lvProduct.FullRowSelect = true;
             this.lvProduct.GridLines = true;
+            this.lvProduct.HideSelection = false;
             this.lvProduct.Location = new System.Drawing.Point(12, 30);
             this.lvProduct.Name = "lvProduct";
             this.lvProduct.Size = new System.Drawing.Size(535, 227);
@@ -189,6 +190,7 @@
             this.lbFundAccount_UF.Name = "lbFundAccount_UF";
             this.lbFundAccount_UF.Size = new System.Drawing.Size(159, 52);
             this.lbFundAccount_UF.TabIndex = 7;
+            this.lbFundAccount_UF.DoubleClick += new System.EventHandler(this.lbDetail_DoubleClick);
             // 
             // lbFundAccount_XY
             // 
@@ -198,6 +200,7 @@
             this.lbFundAccount_XY.Name = "lbFundAccount_XY";
             this.lbFundAccount_XY.Size = new System.Drawing.Size(154, 52);
             this.lbFundAccount_XY.TabIndex = 6;
+            this.lbFundAccount_XY.DoubleClick += new System.EventHandler(this.lbDetail_DoubleClick);
             // 
             // lbStockAccount_UF
             // 
@@ -207,6 +210,7 @@
             this.lbStockAccount_UF.Name = "lbStockAccount_UF";
             this.lbStockAccount_UF.Size = new System.Drawing.Size(159, 52);
             this.lbStockAccount_UF.TabIndex = 5;
+            this.lbStockAccount_UF.DoubleClick += new System.EventHandler(this.lbDetail_DoubleClick);
             // 
             // label5
             // 
@@ -252,6 +256,7 @@
             this.lbStockAccount_XY.Name = "lbStockAccount_XY";
             this.lbStockAccount_XY.Size = new System.Drawing.Size(154, 52);
             this.lbStockAccount_XY.TabIndex = 0;
+            this.lbStockAccount_XY.DoubleClick += new System.EventHandler(this.lbDetail_DoubleClick);
             // 
             // cbShowErrorOnly
             // 
@@ -276,7 +281,7 @@
             // lbResult
             // 
             this.lbResult.AutoSize = true;
-            this.lbResult.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbResult.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbResult.Location = new System.Drawing.Point(417, 275);
             this.lbResult.Name = "lbResult";
             this.lbResult.Size = new System.Drawing.Size(31, 14);

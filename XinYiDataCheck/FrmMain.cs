@@ -164,5 +164,15 @@ namespace XinYiDataCheck
 
             }
         }
+
+        private void lbDetail_DoubleClick(object sender, EventArgs e)
+        {
+            ListBox tmplb = (ListBox)sender;
+            if (tmplb.SelectedItem!=null)
+            {
+                string strInfo = tmplb.SelectedItem.ToString();
+                Clipboard.SetDataObject(strInfo);
+            }
+        }
     }
 }

@@ -123,6 +123,11 @@ namespace XinYiDataCheck
                                 }
 
 
+                                // 账号排序
+                                stockAccount_xy.Sort();
+                                fundAccount_xy.Sort();
+                                stockAccount_uf.Sort();
+                                fundAccount_uf.Sort();
 
 
                                 string branchNo_uf = string.Empty;       // uf营业部号
