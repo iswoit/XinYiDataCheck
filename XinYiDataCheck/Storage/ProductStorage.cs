@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data.OracleClient;
+using System.Configuration;
 
 namespace XinYiDataCheck
 {
@@ -18,6 +19,16 @@ namespace XinYiDataCheck
         {
             ProductList productList = new ProductList();    // 产品列表
 
+            // 20220909白名单
+            string strWhiteList = string.Empty;
+            try
+            {
+                strWhiteList = ConfigurationManager.AppSettings["whitelist"].Trim();
+            }
+            catch (Exception ex)
+            { }
+            string[] listWhiteList = strWhiteList.Split(new char[] { ';','；','|' });
+            
 
             string connString_xy = string.Format(@"User ID={0};Password={1};Data Source=(DESCRIPTION = (ADDRESS_LIST= (ADDRESS = (PROTOCOL = TCP)(HOST = {2})(PORT = {3}))) (CONNECT_DATA = (SERVICE_NAME = {4})))",
                 dbLink_xy.UserName,
@@ -51,6 +62,19 @@ namespace XinYiDataCheck
                             {
                                 // 读新意基础信息
                                 string clientID = dr["PRODUCT_CODE"].ToString().Trim();
+
+                                bool bFind = false;
+                                foreach(string x in listWhiteList)
+                                {
+                                    if(clientID == x)
+                                    {
+                                        bFind = true;
+                                        break;
+                                    }
+                                }
+                                if (bFind == true)
+                                    continue;
+
                                 string extendCode = dr["EXTEND_CODE"].ToString().Trim();        // 扩展代码，这里用于多个客户号
                                 string clientName = string.Empty;
                                 if (!Convert.IsDBNull(dr["PRODUCT_NAME"]))
